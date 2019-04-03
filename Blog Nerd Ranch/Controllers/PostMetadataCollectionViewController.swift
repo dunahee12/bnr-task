@@ -25,6 +25,7 @@ class PostMetadataCollectionViewController: UICollectionViewController, UICollec
 
         // Register cell classes
         self.collectionView!.register(PostMetadataCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(UINib(nibName: PostMetadataCollectionViewCell.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: PostMetadataCollectionViewCell.cellIdentifier)
 
         // Do any additional setup after loading the view.
         title = "Blog Posts"
@@ -112,7 +113,7 @@ class PostMetadataCollectionViewController: UICollectionViewController, UICollec
         let postMetadata = dataSource.postMetadata(at: indexPath)
         
         // Configure the cell
-        cell.titleLabel.text = postMetadata.title
+        cell.setup(withPostMetadata: postMetadata)
     
         return cell
     }
@@ -173,8 +174,9 @@ class PostMetadataCollectionViewController: UICollectionViewController, UICollec
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 300, height: 50)
+        return CGSize(width: collectionView.frame.width, height: 150)
     }
     
     // MARK: - Data methods

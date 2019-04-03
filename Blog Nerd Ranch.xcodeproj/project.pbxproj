@@ -26,6 +26,7 @@
 		83C918ED213E173400FD6F83 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B00B02213621EE000C70F9 /* Post.swift */; };
 		83C918EE213E173700FD6F83 /* DisplayOrdering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C918E8213DDBD100FD6F83 /* DisplayOrdering.swift */; };
 		83C918EF213E18E500FD6F83 /* PostMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B00B0421362224000C70F9 /* PostMetadata.swift */; };
+		EFBA69522254FDF60062A573 /* PostMetadataCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFBA69512254FDF60062A573 /* PostMetadataCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		83B00B02213621EE000C70F9 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		83B00B0421362224000C70F9 /* PostMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMetadata.swift; sourceTree = "<group>"; };
 		83C918E8213DDBD100FD6F83 /* DisplayOrdering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayOrdering.swift; sourceTree = "<group>"; };
+		EFBA69512254FDF60062A573 /* PostMetadataCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostMetadataCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,9 +172,18 @@
 		83B00B0E21389CD6000C70F9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				83B00AFD2135A4C8000C70F9 /* PostMetadataCollectionViewCell.swift */,
+				EFBA69532254FDFC0062A573 /* PostMetadataCollectionViewCell */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		EFBA69532254FDFC0062A573 /* PostMetadataCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				83B00AFD2135A4C8000C70F9 /* PostMetadataCollectionViewCell.swift */,
+				EFBA69512254FDF60062A573 /* PostMetadataCollectionViewCell.xib */,
+			);
+			path = PostMetadataCollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83B00AD421359D00000C70F9 /* LaunchScreen.storyboard in Resources */,
+				EFBA69522254FDF60062A573 /* PostMetadataCollectionViewCell.xib in Resources */,
 				83B00AD121359D00000C70F9 /* Assets.xcassets in Resources */,
 				83B00ACF21359CFF000C70F9 /* Main.storyboard in Resources */,
 			);
