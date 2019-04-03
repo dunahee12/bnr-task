@@ -24,7 +24,6 @@ class PostMetadataCollectionViewController: UICollectionViewController, UICollec
         super.viewDidLoad()
 
         // Register cell classes
-        self.collectionView!.register(PostMetadataCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         self.collectionView!.register(UINib(nibName: PostMetadataCollectionViewCell.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: PostMetadataCollectionViewCell.cellIdentifier)
 
         // Do any additional setup after loading the view.
