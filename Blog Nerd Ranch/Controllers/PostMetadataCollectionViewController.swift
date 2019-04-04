@@ -90,10 +90,12 @@ class PostMetadataCollectionViewController: UICollectionViewController, UICollec
     
     func group(by grouping: Grouping) {
         dataSource.ordering.grouping = grouping
+        collectionView!.reloadData()
     }
     
     func sort(_ sorting: Sorting) {
         dataSource.ordering.sorting = sorting
+        collectionView!.reloadData()
     }
     
     // MARK: UICollectionViewDataSource

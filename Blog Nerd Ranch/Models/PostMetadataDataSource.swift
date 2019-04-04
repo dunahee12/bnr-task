@@ -36,8 +36,7 @@ struct PostMetadataDataSource {
     }
     
     private mutating func createGroups() {
-        // TODO: Group and sort the posts according to the `ordering` value.
-        groups = [Group(name: nil, postMetadata: postMetadataList)]
+        groups = getGroups()
     }
     
     // MARK: UICollectionViewDataSource convenience
@@ -59,7 +58,89 @@ struct PostMetadataDataSource {
     }
  
     // MARK: Grouping
+    
+    private func getGroups() -> [Group] {
+        switch ordering.grouping {
+        case .none:
+            let filteredArray = sortDataArray(filteredArray: postMetadataList)
+            return [Group(name: nil, postMetadata: filteredArray)]
+            
+        case .author:
+            return getAuthorGroups()
+            
+        case .month:
+            return getMonthGroups()
+        }
+    }
+    
+    private func getAuthorGroups() -> [Group] {
+        var groups = [Group]()
         
+        // Create array of names in postMetadata and then an array of unique names
+        let names = postMetadataList.map { $0.author["name"] }
+        let uniqueNameSet = Array(Set(names))
+        
+        for name in uniqueNameSet {
+            var filteredArray = postMetadataList.filter { $0.author["name"] == name }
+            
+            // After we have the data for the group, go ahead and sort it
+            filteredArray = sortDataArray(filteredArray: filteredArray)
+            
+            // Create group with sorted filter and unique author name for the group name
+            let group = Group(name: name, postMetadata: filteredArray)
+            groups.append(group)
+        }
+    
+        return groups
+    }
+    
+    private func getMonthGroups() -> [Group] {
+        var groups = [Group]()
+        
+        // Set up dateFormatter to show only months
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL"
+        
+        // Create array of off months in postMetadata, and then an array of unique months
+        let months = postMetadataList.map { dateFormatter.string(from: $0.publishDate) }
+        let uniqueMonthSet = Array(Set(months))
+        
+        for month in uniqueMonthSet {
+            var filteredArray = postMetadataList.filter { dateFormatter.string(from: $0.publishDate) == month }
+            
+            // After we have the data for the group, go ahead and sort it
+            filteredArray = sortDataArray(filteredArray: filteredArray)
+            
+            // Create group with sorted filter and unique month for the name
+            let group = Group(name: month, postMetadata: filteredArray)
+            groups.append(group)
+        }
+        
+        return groups
+    }
+
     // MARK: Sorting
+    
+    private func sortDataArray(filteredArray: [PostMetadata]) -> [PostMetadata] {
+        switch ordering.sorting {
+        case .alphabeticalByAuthor(ascending: true):
+            return filteredArray.sorted(by: { $0.author["name"]! < $1.author["name"]! })
+            
+        case .alphabeticalByAuthor(ascending: false):
+            return filteredArray.sorted(by: { $0.author["name"]! > $1.author["name"]! })
+            
+        case .alphabeticalByTitle(ascending: true):
+            return filteredArray.sorted(by: { $0.title < $1.title })
+            
+        case .alphabeticalByTitle(ascending: false):
+            return filteredArray.sorted(by: { $0.title > $1.title })
+            
+        case .byPublishDate(recentFirst: true):
+            return filteredArray.sorted(by: { $0.publishDate.compare($1.publishDate) == .orderedDescending })
+            
+        case .byPublishDate(recentFirst: false):
+            return filteredArray.sorted(by: { $0.publishDate.compare($1.publishDate) == .orderedAscending })
+        }
+    }
     
 }
