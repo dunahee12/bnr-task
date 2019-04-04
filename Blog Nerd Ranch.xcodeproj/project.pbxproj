@@ -27,6 +27,8 @@
 		83C918EE213E173700FD6F83 /* DisplayOrdering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C918E8213DDBD100FD6F83 /* DisplayOrdering.swift */; };
 		83C918EF213E18E500FD6F83 /* PostMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B00B0421362224000C70F9 /* PostMetadata.swift */; };
 		EFBA69522254FDF60062A573 /* PostMetadataCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFBA69512254FDF60062A573 /* PostMetadataCollectionViewCell.xib */; };
+		EFBA6956225696620062A573 /* BNRLoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA6955225696610062A573 /* BNRLoadingScreen.swift */; };
+		EFBA6959225698390062A573 /* BNRLoadingScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFBA6958225698390062A573 /* BNRLoadingScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		83B00B0421362224000C70F9 /* PostMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMetadata.swift; sourceTree = "<group>"; };
 		83C918E8213DDBD100FD6F83 /* DisplayOrdering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayOrdering.swift; sourceTree = "<group>"; };
 		EFBA69512254FDF60062A573 /* PostMetadataCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostMetadataCollectionViewCell.xib; sourceTree = "<group>"; };
+		EFBA6955225696610062A573 /* BNRLoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNRLoadingScreen.swift; sourceTree = "<group>"; };
+		EFBA6958225698390062A573 /* BNRLoadingScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BNRLoadingScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,7 @@
 		83B00AC821359CFF000C70F9 /* Blog Nerd Ranch */ = {
 			isa = PBXGroup;
 			children = (
+				EFBA6954225696050062A573 /* Views */,
 				83B00B0E21389CD6000C70F9 /* Cells */,
 				83B00B0D21389CB9000C70F9 /* Controllers */,
 				83B00B01213621B1000C70F9 /* Models */,
@@ -184,6 +189,23 @@
 				EFBA69512254FDF60062A573 /* PostMetadataCollectionViewCell.xib */,
 			);
 			path = PostMetadataCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		EFBA6954225696050062A573 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EFBA6957225696C90062A573 /* BNRLoadingScreen */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EFBA6957225696C90062A573 /* BNRLoadingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EFBA6955225696610062A573 /* BNRLoadingScreen.swift */,
+				EFBA6958225698390062A573 /* BNRLoadingScreen.xib */,
+			);
+			path = BNRLoadingScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83B00AD421359D00000C70F9 /* LaunchScreen.storyboard in Resources */,
+				EFBA6959225698390062A573 /* BNRLoadingScreen.xib in Resources */,
 				EFBA69522254FDF60062A573 /* PostMetadataCollectionViewCell.xib in Resources */,
 				83B00AD121359D00000C70F9 /* Assets.xcassets in Resources */,
 				83B00ACF21359CFF000C70F9 /* Main.storyboard in Resources */,
@@ -322,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				836E38D32139A918005B928C /* Server.swift in Sources */,
+				EFBA6956225696620062A573 /* BNRLoadingScreen.swift in Sources */,
 				83B00B00213606BC000C70F9 /* PostViewController.swift in Sources */,
 				83B00ACA21359CFF000C70F9 /* AppDelegate.swift in Sources */,
 				83B00B0521362224000C70F9 /* PostMetadata.swift in Sources */,
