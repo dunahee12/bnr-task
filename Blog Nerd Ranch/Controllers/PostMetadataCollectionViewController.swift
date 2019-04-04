@@ -123,40 +123,43 @@ class PostMetadataCollectionViewController: UICollectionViewController, UICollec
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let postMetadata = dataSource.postMetadata(at: indexPath)
 
-        let url = server.allPostsUrl
-
-        // Get all posts, filter to the selected post, and then show it
-        // Is there a better way to do this?
+        let url = server.postUrlFor(id: postMetadata.postId)
+        
+        BNRLoadingScreen.shared.showLoadingScreen(forView: self.view)
+        
+        // Get single post based on postId
         if downloadTask?.progress.isCancellable ?? false {
             downloadTask?.cancel()
         }
+        
         let task = URLSession.shared.dataTask(with: url) { [weak self] (data, _, error) in
+            DispatchQueue.main.async {
+                BNRLoadingScreen.shared.hideLoadingScreen()
+            }
+            
             guard error == nil else {
                 self?.displayError(error: error!)
                 return
             }
+            
             guard let data = data else {
                 self?.displayError(error: MetadataError.missingData)
                 return
             }
             
-            let posts : [Post]?
+            let post : Post?
             let decoder = JSONDecoder();
             decoder.dateDecodingStrategy = .iso8601
             do {
-                posts = try decoder.decode(Array<Post>.self, from: data)
+                post = try decoder.decode(Post.self, from: data)
             } catch {
                 self?.displayError(error: error)
                 return
             }
             
-            let selectedPost = posts?.first(where: { (post) -> Bool in
-                return post.id == postMetadata.postId
-            })
-            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let postController = storyboard.instantiateViewController(withIdentifier: "PostViewController") as! PostViewController
-            postController.post = selectedPost
+            postController.post = post
             
             DispatchQueue.main.async {
                 self?.navigationController?.pushViewController(postController, animated: true)
