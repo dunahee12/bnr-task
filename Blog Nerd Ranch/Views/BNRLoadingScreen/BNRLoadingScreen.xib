@@ -35,6 +35,9 @@
                 </visualEffectView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <accessibility key="accessibilityConfiguration" label="Loading Screen">
+                <bool key="isElement" value="YES"/>
+            </accessibility>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="sNP-F3-k4y" secondAttribute="bottom" id="NTa-mq-ppb"/>
                 <constraint firstItem="sNP-F3-k4y" firstAttribute="leading" secondItem="tlM-3p-QCs" secondAttribute="leading" id="cX4-aZ-wdb"/>

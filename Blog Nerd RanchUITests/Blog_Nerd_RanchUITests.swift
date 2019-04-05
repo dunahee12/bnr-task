@@ -38,4 +38,20 @@ class Blog_Nerd_RanchUITests: XCTestCase {
         XCTAssertEqual(titleText, postDetailTitle)
     }
     
+    func testThatTappingOnMetadataShowsLoadingScreen() {
+        let app = XCUIApplication()
+        let firstCell = app.collectionViews.children(matching: .cell).element(boundBy: 0)
+        firstCell.tap()
+        
+        // Test that loading screen shows after tapping postMetadata
+        let loadingScreen = app.otherElements["Loading Screen"]
+        XCTAssertTrue(loadingScreen.exists)
+        
+        // After 4 seconds, app should have pushed to PostViewController
+        // Confirm that loading screen is gone
+        let existsPredicate = NSPredicate(format: "exists == 0")
+        expectation(for: existsPredicate, evaluatedWith: loadingScreen, handler: nil)
+        waitForExpectations(timeout: 4, handler: nil)
+    }
+    
 }
